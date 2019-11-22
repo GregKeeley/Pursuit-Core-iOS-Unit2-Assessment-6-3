@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var crayons = [Crayon]()
+    var alphaValue: CGFloat = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,10 @@ class ViewController: UIViewController {
         let crayon = crayons[indexPath.row]
         CrayonDetailVC.crayon = crayon
         CrayonDetailVC.titleBar.title = crayon.name
+        CrayonDetailVC.alphaValue = alphaValue
+        CrayonDetailVC.crayonRed = CGFloat(crayon.red)
+        CrayonDetailVC.crayonGreen = CGFloat(crayon.green)
+        CrayonDetailVC.crayonBlue = CGFloat(crayon.blue)
     }
     
     
@@ -48,9 +53,9 @@ extension ViewController: UITableViewDataSource {
         if crayon.red == 0 && crayon.green == 0 && crayon.blue == 0 {
             cell.textLabel?.textColor = .white
             cell.detailTextLabel?.textColor = .white
-            cell.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: 0.80)
+            cell.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: alphaValue)
         } else {
-            cell.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: 0.80)
+            cell.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: alphaValue)
             
         }
         return cell

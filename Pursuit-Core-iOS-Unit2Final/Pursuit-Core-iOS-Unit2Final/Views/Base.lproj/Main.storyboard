@@ -91,12 +91,21 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NRq-6F-JwB">
                                 <rect key="frame" x="148" y="128" width="248" height="31"/>
+                                <connections>
+                                    <action selector="redSliderChanged:" destination="hF8-G0-EHb" eventType="valueChanged" id="1TE-41-2aj"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="L7d-1R-Wyy">
                                 <rect key="frame" x="148" y="199" width="248" height="31"/>
+                                <connections>
+                                    <action selector="greenValueChanged:" destination="hF8-G0-EHb" eventType="valueChanged" id="x3I-Wc-uhs"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KQn-UU-SVx">
                                 <rect key="frame" x="148" y="270" width="248" height="31"/>
+                                <connections>
+                                    <action selector="blueValueChanged:" destination="hF8-G0-EHb" eventType="valueChanged" id="gFZ-yF-0LD"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alpha value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-wZ-mOd">
                                 <rect key="frame" x="20" y="341" width="80" height="18"/>
@@ -104,13 +113,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zpz-sp-CMp">
-                                <rect key="frame" x="148" y="341" width="248" height="31"/>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-EH-qG0">
-                                <rect key="frame" x="147" y="411" width="120" height="48"/>
+                                <rect key="frame" x="132" y="411" width="150" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Set Color"/>
+                                <state key="normal" title="Reset Color"/>
+                                <connections>
+                                    <action selector="resetColorButtonPressed" destination="hF8-G0-EHb" eventType="touchUpInside" id="Ql9-Wq-eXH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIK-S1-Ffh">
                                 <rect key="frame" x="20" y="128" width="69" height="18"/>
@@ -118,6 +127,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="1" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="WL6-UE-9QD">
+                                <rect key="frame" x="225" y="334" width="94" height="32"/>
+                                <connections>
+                                    <action selector="alphaValueChanged:" destination="hF8-G0-EHb" eventType="valueChanged" id="X4g-Hi-Bxa"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -126,15 +141,14 @@
                             <constraint firstItem="b9l-EH-qG0" firstAttribute="centerX" secondItem="vdl-DI-kET" secondAttribute="centerX" id="BcG-bY-qHN"/>
                             <constraint firstItem="SMi-DB-FKl" firstAttribute="leading" secondItem="ohN-HD-gQH" secondAttribute="leading" constant="20" id="Bxq-Zt-0ct"/>
                             <constraint firstItem="KQn-UU-SVx" firstAttribute="top" secondItem="L7d-1R-Wyy" secondAttribute="bottom" constant="41" id="I3J-oj-hr5"/>
+                            <constraint firstItem="WL6-UE-9QD" firstAttribute="top" secondItem="KQn-UU-SVx" secondAttribute="bottom" constant="34" id="KDI-OK-clK"/>
                             <constraint firstItem="mtC-wZ-mOd" firstAttribute="top" secondItem="SMi-DB-FKl" secondAttribute="bottom" constant="53" id="NdQ-f0-Yf4"/>
                             <constraint firstItem="ohN-HD-gQH" firstAttribute="trailing" secondItem="KQn-UU-SVx" secondAttribute="trailing" constant="20" id="PTT-av-bbZ"/>
                             <constraint firstItem="L7d-1R-Wyy" firstAttribute="leading" secondItem="oag-O4-qQr" secondAttribute="trailing" constant="47" id="Rqc-cQ-hmI"/>
-                            <constraint firstItem="b9l-EH-qG0" firstAttribute="top" secondItem="zpz-sp-CMp" secondAttribute="bottom" constant="40" id="SK3-65-uGU"/>
-                            <constraint firstItem="zpz-sp-CMp" firstAttribute="leading" secondItem="mtC-wZ-mOd" secondAttribute="trailing" constant="50" id="TgJ-kt-1gQ"/>
+                            <constraint firstItem="b9l-EH-qG0" firstAttribute="top" secondItem="WL6-UE-9QD" secondAttribute="bottom" constant="45" id="XuZ-lR-EOm"/>
                             <constraint firstItem="NRq-6F-JwB" firstAttribute="top" secondItem="ohN-HD-gQH" secondAttribute="top" constant="40" id="baE-Jh-Vbf"/>
+                            <constraint firstItem="WL6-UE-9QD" firstAttribute="leading" secondItem="mtC-wZ-mOd" secondAttribute="trailing" constant="125" id="eh2-kY-0Bz"/>
                             <constraint firstItem="L7d-1R-Wyy" firstAttribute="top" secondItem="NRq-6F-JwB" secondAttribute="bottom" constant="41" id="fB4-QN-h0Y"/>
-                            <constraint firstItem="zpz-sp-CMp" firstAttribute="top" secondItem="KQn-UU-SVx" secondAttribute="bottom" constant="41" id="fyD-O1-Zu3"/>
-                            <constraint firstItem="ohN-HD-gQH" firstAttribute="trailing" secondItem="zpz-sp-CMp" secondAttribute="trailing" constant="20" id="g7b-xz-aXU"/>
                             <constraint firstItem="oag-O4-qQr" firstAttribute="leading" secondItem="ohN-HD-gQH" secondAttribute="leading" constant="20" id="gxh-hJ-p2P"/>
                             <constraint firstItem="mtC-wZ-mOd" firstAttribute="leading" secondItem="ohN-HD-gQH" secondAttribute="leading" constant="20" id="gzF-KH-nXS"/>
                             <constraint firstItem="oag-O4-qQr" firstAttribute="top" secondItem="SIK-S1-Ffh" secondAttribute="bottom" constant="53" id="hid-Kv-xQw"/>
@@ -148,9 +162,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="DFg-FN-FkB"/>
                     <connections>
-                        <outlet property="alphaValueSlider" destination="zpz-sp-CMp" id="SSv-h2-9I7"/>
+                        <outlet property="alphaLabel" destination="mtC-wZ-mOd" id="u51-6S-GFi"/>
+                        <outlet property="alphaValueStepper" destination="WL6-UE-9QD" id="uB0-mk-3YR"/>
+                        <outlet property="blueLabel" destination="SMi-DB-FKl" id="GRb-Sg-M2K"/>
                         <outlet property="blueValueSlider" destination="KQn-UU-SVx" id="hSL-cl-LSS"/>
+                        <outlet property="greenLabel" destination="oag-O4-qQr" id="u4f-He-Sgj"/>
                         <outlet property="greenValueSlider" destination="L7d-1R-Wyy" id="x0b-3R-cY4"/>
+                        <outlet property="redLabel" destination="SIK-S1-Ffh" id="bkQ-dc-2qf"/>
                         <outlet property="redValueSlider" destination="NRq-6F-JwB" id="0To-Hj-gW8"/>
                         <outlet property="setColorButton" destination="b9l-EH-qG0" id="HQm-mi-dOq"/>
                         <outlet property="titleBar" destination="DFg-FN-FkB" id="7cs-eb-3u1"/>

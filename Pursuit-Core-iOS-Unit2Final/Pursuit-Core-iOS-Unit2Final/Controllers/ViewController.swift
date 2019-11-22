@@ -45,11 +45,17 @@ extension ViewController: UITableViewDataSource {
         let crayon = crayons[indexPath.row]
         cell.textLabel?.text = crayon.name
         cell.detailTextLabel?.text = crayon.hex
-        cell.backgroundColor = UIColor(red: CGFloat(crayon.red), green: CGFloat(crayon.green), blue: CGFloat(crayon.blue), alpha: 0.50)
+        if crayon.red == 0 && crayon.green == 0 && crayon.blue == 0 {
+            cell.textLabel?.textColor = .white
+            cell.detailTextLabel?.textColor = .white
+            cell.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: 0.80)
+        } else {
+            cell.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: 0.80)
+            
+        }
         return cell
-        
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        crayons.count
-    }
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    crayons.count
+}
 }

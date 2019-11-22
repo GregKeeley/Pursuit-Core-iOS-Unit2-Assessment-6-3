@@ -107,8 +107,8 @@
                                     <action selector="blueValueChanged:" destination="hF8-G0-EHb" eventType="valueChanged" id="gFZ-yF-0LD"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alpha value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-wZ-mOd">
-                                <rect key="frame" x="20" y="341" width="80" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alpha value:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-wZ-mOd">
+                                <rect key="frame" x="20" y="341" width="84" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -128,7 +128,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" maximumValue="1" stepValue="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="WL6-UE-9QD">
-                                <rect key="frame" x="225" y="334" width="94" height="32"/>
+                                <rect key="frame" x="229" y="334" width="94" height="32"/>
                                 <connections>
                                     <action selector="alphaValueChanged:" destination="hF8-G0-EHb" eventType="valueChanged" id="X4g-Hi-Bxa"/>
                                 </connections>

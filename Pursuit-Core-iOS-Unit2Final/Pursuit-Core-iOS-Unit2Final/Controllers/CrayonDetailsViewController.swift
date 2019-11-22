@@ -9,7 +9,7 @@
 import UIKit
 
 class CrayonDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var titleBar: UINavigationItem!
     
     @IBOutlet weak var redValueSlider: UISlider!
@@ -35,7 +35,7 @@ class CrayonDetailsViewController: UIViewController {
     var newGreen: CGFloat!
     var newBlue: CGFloat!
     var newAlpha: CGFloat!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,19 +52,19 @@ class CrayonDetailsViewController: UIViewController {
         
         
         redLabel.text = "Red Value: \(String(format: "%3.f", (newRed ?? 0)))"
-               greenLabel.text = "Green Value: \(String(format: "%3.f", (newGreen ?? 0)))"
-               blueLabel.text = "Blue Value: \(String(format: "%3.f", (newBlue ?? 0)))"
-               alphaLabel.text = "Alpha Value: \(String(format: "%3.f", (alphaValue)))"
+        greenLabel.text = "Green Value: \(String(format: "%3.f", (newGreen ?? 0)))"
+        blueLabel.text = "Blue Value: \(String(format: "%3.f", (newBlue ?? 0)))"
+        alphaLabel.text = "Alpha Value: \(String(format: "%3.f", (alphaValue)))"
     }
     
     func updateLabels() {
-        if newAlpha < 0.40000000000000013 {
-            redLabel.textColor = .white
-            greenLabel.textColor = .white
-            blueLabel.textColor = .white
-            alphaLabel.textColor = .white
-        }
-        if newRed >= 0.5 || newGreen >= 0.5 || newBlue >= 0.5  {
+        redLabel.text = "Red Value: \(String(format: "%2.f", (newRed * 255)))"
+        greenLabel.text = "Green Value: \(String(format: "%2.f", (newGreen * 255)))"
+        blueLabel.text = "Blue Value: \(String(format: "%2.f", (newBlue * 255)))"
+        alphaLabel.text = "Alpha Value: \(String(format: "%1.f",(newAlpha ?? 1.0)))"
+    }
+    func textColorCheck() {
+        if newRed >= 0.5 && newGreen >= 0.5 && newBlue >= 0.5 {
             redLabel.textColor = .black
             greenLabel.textColor = .black
             blueLabel.textColor = .black
@@ -75,51 +75,54 @@ class CrayonDetailsViewController: UIViewController {
             blueLabel.textColor = .white
             alphaLabel.textColor = .white
         }
-//        redLabel.text = "Red Value: \(String(format: "%2.f", newRed))"
-//        greenLabel.text = "Green Value: \(String(format: "%2.f", newGreen))"
-//        blueLabel.text = "Blue Value: \(String(format: "%2.f", newBlue))"
-//        alphaLabel.text = "Alpha Value: \(String(format: "%2.f", newAlpha))"
-        
-        redLabel.text = "Red Value: \(String(format: "%3.f", (newRed * 255)))"
-        greenLabel.text = "Green Value: \(String(format: "%3.f", (newGreen * 255)))"
-        blueLabel.text = "Blue Value: \(String(format: "%3.f", (newBlue * 255)))"
-        alphaLabel.text = "Alpha Value: \(String(format: "%3.f", (alphaValue)))"
-    }
+        if newAlpha >= 0.5 {
+            redLabel.textColor = .black
+                       greenLabel.textColor = .black
+                       blueLabel.textColor = .black
+                       alphaLabel.textColor = .black
+        } else if newAlpha < 0.5 {
+                       redLabel.textColor = .white
+                       greenLabel.textColor = .white
+                       blueLabel.textColor = .white
+                       alphaLabel.textColor = .white
+                   }
+        }
     
     func backgroundColorSet() {
         view.backgroundColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: newAlpha)
         updateLabels()
     }
     
-
-//MARK:Sliders/Stepper Actions
+    
+    //MARK:Sliders/Stepper Actions
     @IBAction func redSliderChanged(_ sender: UISlider) {
         newRed = CGFloat(sender.value)
         
-       view.backgroundColor = UIColor(red: CGFloat(newRed), green: CGFloat(newGreen)/CGFloat(255), blue: CGFloat(newBlue)/CGFloat(255), alpha: newAlpha)
+        view.backgroundColor = UIColor(red: CGFloat(newRed), green: CGFloat(newGreen)/CGFloat(255), blue: CGFloat(newBlue)/CGFloat(255), alpha: newAlpha)
         updateLabels()
+        textColorCheck()
     }
     @IBAction func greenValueChanged(_ sender: UISlider) {
         newGreen = CGFloat(sender.value)
         
         view.backgroundColor = UIColor(red: CGFloat(newRed)/CGFloat(255), green: CGFloat(sender.value), blue: CGFloat(newBlue)/CGFloat(255), alpha: newAlpha)
         updateLabels()
-               
+        textColorCheck()
     }
     
     @IBAction func blueValueChanged(_ sender: UISlider) {
-        newBlue = CGFloat(sender.value)/CGFloat(255)
+        newBlue = CGFloat(sender.value)
         
-       view.backgroundColor = UIColor(red: CGFloat(newRed)/CGFloat(255), green: CGFloat(newGreen)/CGFloat(255), blue: CGFloat(sender.value), alpha: newAlpha)
+        view.backgroundColor = UIColor(red: CGFloat(newRed)/CGFloat(255), green: CGFloat(newGreen)/CGFloat(255), blue: CGFloat(sender.value), alpha: newAlpha)
         updateLabels()
-        
+        textColorCheck()
     }
     
     @IBAction func alphaValueChanged(_ sender: UIStepper) {
         newAlpha = CGFloat(sender.value)
-       view.backgroundColor = UIColor(red: CGFloat(newRed)/CGFloat(255), green: CGFloat(newGreen)/CGFloat(255), blue: CGFloat(newBlue)/CGFloat(255), alpha: CGFloat(sender.value))
+        view.backgroundColor = UIColor(red: CGFloat(newRed)/CGFloat(255), green: CGFloat(newGreen)/CGFloat(255), blue: CGFloat(newBlue)/CGFloat(255), alpha: CGFloat(sender.value))
         updateLabels()
-        print(newAlpha!)
+        textColorCheck()
     }
     
     @IBAction func resetColorButtonPressed() {
@@ -128,5 +131,6 @@ class CrayonDetailsViewController: UIViewController {
         blueValueSlider.value = Float(crayonBlue/CGFloat(255))
         view.backgroundColor = UIColor(red: CGFloat(crayon.red)/CGFloat(255), green: CGFloat(crayon.green)/CGFloat(255), blue: CGFloat(crayon.blue)/CGFloat(255), alpha: alphaValue)
         updateLabels()
+        textColorCheck()
     }
 }
